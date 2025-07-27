@@ -16,6 +16,7 @@ import {
   Play,
   Link
 } from "lucide-react";
+import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/react";
 
 interface StudentDashboardProps {
   user: any;
@@ -70,8 +71,10 @@ export function StudentDashboard({ user, onJoinBatch, onJoinLiveSession }: Stude
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-card border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+
+
+      <IonHeader className="bg-card border-b border-border">
+        <IonTitle className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Avatar className="h-10 w-10">
@@ -79,15 +82,15 @@ export function StudentDashboard({ user, onJoinBatch, onJoinLiveSession }: Stude
                 <AvatarFallback>{user.name?.split(' ').map((n: string) => n[0]).join('')}</AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-xl font-semibold">Welcome, {user.name}</h1>
+                <IonTitle className="text-xl font-semibold pl-0">Welcome, {user.name}</IonTitle>
                 <p className="text-sm text-muted-foreground">Student Portal</p>
               </div>
             </div>
           </div>
-        </div>
-      </header>
+        </IonTitle>
+      </IonHeader>
 
-      <div className="container mx-auto px-4 py-6">
+      <IonContent className="ion-padding container mx-auto px-4 py-6">
         <Tabs defaultValue="batches" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="batches">My Batches</TabsTrigger>
@@ -254,7 +257,7 @@ export function StudentDashboard({ user, onJoinBatch, onJoinLiveSession }: Stude
             </Card>
           </TabsContent>
         </Tabs>
-      </div>
+      </IonContent>
     </div>
   );
 }

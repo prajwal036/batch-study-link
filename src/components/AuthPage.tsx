@@ -53,11 +53,11 @@ export function AuthPage({ onLogin }: AuthPageProps) {
 
   return (
     <IonPage>
-      <IonContent className="bg-gradient-hero">
+      <IonContent className="bg-gradient-to-bl from-[#fad0c4] to-[#ffd1ff]">
         <IonGrid>
           <IonRow className="min-h-screen">
             {/* Left side - Hero content */}
-            <IonCol size="12" sizeLg="6" className="flex flex-col justify-center">
+            <IonCol size="12" sizeLg="6" className="flex flex-col justify-center ">
               <div className="px-6 py-12">
                 <div className="text-center lg:text-left mb-8">
                   <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
