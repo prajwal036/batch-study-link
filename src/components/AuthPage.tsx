@@ -4,6 +4,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  IonContent, 
+  IonPage, 
+  IonItem, 
+  IonInput, 
+  IonButton, 
+  IonSegment, 
+  IonSegmentButton, 
+  IonLabel,
+  IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonList,
+  IonText
+} from "@ionic/react";
+import { bookOutline, peopleOutline, videocamOutline, documentTextOutline, mailOutline, callOutline, logoGoogle, logoFacebook } from "ionicons/icons";
 import { BookOpen, Users, Video, FileText, Phone, Mail } from "lucide-react";
 import classroomHero from "@/assets/classroom-hero.jpg";
 
@@ -31,168 +52,149 @@ export function AuthPage({ onLogin }: AuthPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex flex-col">
-      {/* Hero Section */}
-      <div className="flex-1 flex flex-col lg:flex-row">
-        {/* Left side - Hero content */}
-        <div className="flex-1 flex flex-col justify-center px-6 py-12 lg:px-12">
-          <div className="max-w-md mx-auto lg:mx-0">
-            <div className="text-center lg:text-left mb-8">
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                Welcome to <span className="text-gradient">EduClass</span>
-              </h1>
-              <p className="text-white/90 text-lg mb-6">
-                Connect teachers and students in an interactive learning environment
-              </p>
-            </div>
+    <IonPage>
+      <IonContent className="bg-gradient-hero">
+        <IonGrid>
+          <IonRow className="min-h-screen">
+            {/* Left side - Hero content */}
+            <IonCol size="12" sizeLg="6" className="flex flex-col justify-center">
+              <div className="px-6 py-12">
+                <div className="text-center lg:text-left mb-8">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Welcome to <span className="text-gradient">EduClass</span>
+                  </h1>
+                  <IonText color="light">
+                    <p className="text-lg mb-6">
+                      Connect teachers and students in an interactive learning environment
+                    </p>
+                  </IonText>
+                </div>
 
-            {/* Features highlights */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-2 text-white/90">
-                <Users className="h-5 w-5" />
-                <span className="text-sm">Batch Management</span>
+                {/* Features highlights */}
+                <IonGrid>
+                  <IonRow>
+                    <IonCol size="6">
+                      <div className="flex items-center gap-2 text-white/90 mb-4">
+                        <IonIcon icon={peopleOutline} className="text-xl" />
+                        <span className="text-sm">Batch Management</span>
+                      </div>
+                    </IonCol>
+                    <IonCol size="6">
+                      <div className="flex items-center gap-2 text-white/90 mb-4">
+                        <IonIcon icon={videocamOutline} className="text-xl" />
+                        <span className="text-sm">Live Sessions</span>
+                      </div>
+                    </IonCol>
+                    <IonCol size="6">
+                      <div className="flex items-center gap-2 text-white/90 mb-4">
+                        <IonIcon icon={documentTextOutline} className="text-xl" />
+                        <span className="text-sm">Study Materials</span>
+                      </div>
+                    </IonCol>
+                    <IonCol size="6">
+                      <div className="flex items-center gap-2 text-white/90 mb-4">
+                        <IonIcon icon={bookOutline} className="text-xl" />
+                        <span className="text-sm">NCERT Access</span>
+                      </div>
+                    </IonCol>
+                  </IonRow>
+                </IonGrid>
               </div>
-              <div className="flex items-center gap-2 text-white/90">
-                <Video className="h-5 w-5" />
-                <span className="text-sm">Live Sessions</span>
+            </IonCol>
+
+            {/* Right side - Authentication */}
+            <IonCol size="12" sizeLg="6" className="flex items-center justify-center">
+              <div className="w-full max-w-md px-6 py-12">
+                <IonCard className="card-elevated">
+                  <IonCardHeader className="text-center">
+                    <IonCardTitle className="text-2xl font-bold text-gradient">
+                      Get Started
+                    </IonCardTitle>
+                    <IonText color="medium">
+                      <p>Choose your role to access the platform</p>
+                    </IonText>
+                  </IonCardHeader>
+                  
+                  <IonCardContent>
+                    <IonSegment value="student" className="mb-6">
+                      <IonSegmentButton value="student">
+                        <IonLabel>Student</IonLabel>
+                      </IonSegmentButton>
+                      <IonSegmentButton value="teacher">
+                        <IonLabel>Teacher</IonLabel>
+                      </IonSegmentButton>
+                    </IonSegment>
+                    
+                    <div className="space-y-4">
+                      <IonButton 
+                        expand="block"
+                        fill="solid"
+                        onClick={() => handleAuth('student')}
+                        disabled={isLoading}
+                        className="btn-primary"
+                      >
+                        <IonIcon icon={logoGoogle} slot="start" />
+                        Continue with Google
+                      </IonButton>
+                      
+                      <IonButton 
+                        expand="block"
+                        fill="outline"
+                        onClick={() => handleAuth('student')}
+                        disabled={isLoading}
+                      >
+                        <IonIcon icon={logoFacebook} slot="start" />
+                        Continue with Facebook
+                      </IonButton>
+                      
+                      <div className="relative my-4">
+                        <div className="absolute inset-0 flex items-center">
+                          <span className="w-full border-t border-gray-300" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                          <span className="bg-white px-2 text-gray-500">Or</span>
+                        </div>
+                      </div>
+                      
+                      <IonList>
+                        <IonItem>
+                          <IonInput 
+                            placeholder="+1 (555) 000-0000"
+                            type="tel"
+                          />
+                          <IonButton fill="clear" slot="end">
+                            <IonIcon icon={callOutline} />
+                          </IonButton>
+                        </IonItem>
+                      </IonList>
+                      
+                      <IonButton 
+                        expand="block"
+                        fill="solid"
+                        onClick={() => handleAuth('student')}
+                        disabled={isLoading}
+                        className="btn-accent mt-4"
+                      >
+                        <IonIcon icon={mailOutline} slot="start" />
+                        Sign In with Phone
+                      </IonButton>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
               </div>
-              <div className="flex items-center gap-2 text-white/90">
-                <FileText className="h-5 w-5" />
-                <span className="text-sm">Study Materials</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/90">
-                <BookOpen className="h-5 w-5" />
-                <span className="text-sm">NCERT Access</span>
-              </div>
-            </div>
-          </div>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+
+        {/* Hero Image Section for larger screens */}
+        <div className="hidden lg:block h-64 overflow-hidden">
+          <img 
+            src={classroomHero} 
+            alt="Modern classroom with students and technology"
+            className="w-full h-full object-cover opacity-90"
+          />
         </div>
-
-        {/* Right side - Authentication */}
-        <div className="flex-1 flex items-center justify-center px-6 py-12">
-          <Card className="w-full max-w-md card-elevated">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold text-gradient">
-                Get Started
-              </CardTitle>
-              <CardDescription>
-                Choose your role to access the platform
-              </CardDescription>
-            </CardHeader>
-            
-            <CardContent>
-              <Tabs defaultValue="student" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="student">Student</TabsTrigger>
-                  <TabsTrigger value="teacher">Teacher</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="student" className="space-y-4">
-                  <div className="space-y-4">
-                    <Button 
-                      onClick={() => handleAuth('student')}
-                      disabled={isLoading}
-                      className="w-full btn-primary"
-                    >
-                      <Mail className="h-4 w-4 mr-2" />
-                      Continue with Google
-                    </Button>
-                    
-                    <Button 
-                      onClick={() => handleAuth('student')}
-                      disabled={isLoading}
-                      variant="outline"
-                      className="w-full"
-                    >
-                      Continue with Facebook
-                    </Button>
-                    
-                    <div className="relative">
-                      <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t" />
-                      </div>
-                      <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-muted-foreground">Or</span>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <div className="flex">
-                        <Input 
-                          id="phone" 
-                          placeholder="+1 (555) 000-0000" 
-                          className="flex-1"
-                        />
-                        <Button className="ml-2" variant="outline">
-                          <Phone className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-                
-                <TabsContent value="teacher" className="space-y-4">
-                  <div className="space-y-4">
-                    <Button 
-                      onClick={() => handleAuth('teacher')}
-                      disabled={isLoading}
-                      className="w-full btn-secondary"
-                    >
-                      <Mail className="h-4 w-4 mr-2" />
-                      Continue with Google
-                    </Button>
-                    
-                    <Button 
-                      onClick={() => handleAuth('teacher')}
-                      disabled={isLoading}
-                      variant="outline"
-                      className="w-full"
-                    >
-                      Continue with Facebook
-                    </Button>
-                    
-                    <div className="relative">
-                      <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t" />
-                      </div>
-                      <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-muted-foreground">Or</span>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="teacher-email">Email</Label>
-                      <Input 
-                        id="teacher-email" 
-                        type="email"
-                        placeholder="teacher@school.edu" 
-                      />
-                    </div>
-                    
-                    <Button 
-                      onClick={() => handleAuth('teacher')}
-                      disabled={isLoading}
-                      className="w-full btn-accent"
-                    >
-                      Sign In as Teacher
-                    </Button>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Hero Image Section */}
-      <div className="hidden lg:block h-64 overflow-hidden">
-        <img 
-          src={classroomHero} 
-          alt="Modern classroom with students and technology"
-          className="w-full h-full object-cover opacity-90"
-        />
-      </div>
-    </div>
+      </IonContent>
+    </IonPage>
   );
 }
